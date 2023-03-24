@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Read GTF file into R
 
 ### Use the latest `GENCODE` GTF file
-
+#### disclaimer: this codes are derived from https://davetang.github.io/muse/read_gtf.html 
 ```{r}
 gencode_ver <- 43
 my_url <- paste0("https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_",
