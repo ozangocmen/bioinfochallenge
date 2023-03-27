@@ -19,8 +19,8 @@ my_url <- paste0("https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/rele
                  gencode_ver, "/gencode.v", gencode_ver, ".annotation.gtf.gz")
 my_gtf <- basename(my_url)
 
-if (!file.exists(paste0("C:/Users/OZAN/Desktop/biochallange", my_gtf))){
-  download.file(url = my_url, destfile = paste0("C:/Users/OZAN/Desktop/biochallange", my_gtf))
+if (!file.exists(paste0("~/home", my_gtf))){
+  download.file(url = my_url, destfile = paste0("~/home", my_gtf))
 }
 
 if (!require("BiocManager", quietly = TRUE))
@@ -33,13 +33,13 @@ install.packages("dplyr")
 library(dplyr)
 
 # Read in the GTF file
-gtf <- read.table("C:/Users/OZAN/Desktop/biochallange/my_gtf", sep="\t", header=FALSE)
+gtf <- read.table("~/home/my_gtf", sep="\t", header=FALSE)
 
 # Remove rows containing NAs
 gtf <- gtf[complete.cases(gtf),]
 
 
-my_obj <- import(paste0("C:/Users/OZAN/Desktop/biochallange", my_gtf))
+my_obj <- import(paste0("~/home", my_gtf))
 
 if (seqlevels(){}
 class(my_obj)
@@ -99,17 +99,11 @@ install.packages("Gviz")
 install.packages("GenomicFeatures")
 library(Gviz)
 library(GenomicFeatures)
-my_txdb <- makeTxDbFromGFF(paste0("C:/Users/OZAN/Desktop/biochallange", my_gtf))
+my_txdb <- makeTxDbFromGFF(paste0("~/home", my_gtf))
 
 my_start <- 7661779 - 5000     # visualisation transcripts near chr17:7661779-7687538
 my_end <- 7687538 + 5000
 geneTrack <- GeneRegionTrack(my_txdb, chromosome="chr17", from=my_start, to=my_end)
 
 plotTracks(geneTrack, chromosome="chr17", from=my_start, to=my_end, showId=TRUE)
-```
-
-```{r}
-```
-
-```{r}
 ```
